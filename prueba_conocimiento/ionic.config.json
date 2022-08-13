@@ -1,0 +1,7 @@
+{
+  "name": "prueba_conocimiento",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
