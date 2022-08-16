@@ -3,23 +3,99 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-title>{{ folder }}</ion-title>
+          <ion-title class="text-sm">{{user}} - {{date}}</ion-title>
+        </ion-col>
+        <ion-col push="4">
+          <ion-button>
+            <ion-icon name="refresh"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="">
+    <div class="grid grid-cols-2 gap-2 mt-6">
+      <div class="ml-6 mr-3">
+        <select class="select select-bordered w-full max-w-xs text-sm">
+          <option disabled selected>Todas las tiendas</option>
+          <option>Tienda 1</option>
+          <option>Tienda 2</option>
+          <option>Tienda 3</option>
+        </select>
+      </div>
+      <div class="ml-3 mr-6">
+        <select class="select select-bordered w-full max-w-xs text-sm">
+          <option disabled selected>Todos los pilotos</option>
+          <option>Juan Perez</option>
+          <option>Pedro García</option>
+          <option>Carlos Morales</option>
+          <option>Jose Mendez</option>
+        </select>
+      </div>
+      <div class="ml-14 mr-6 pt-6 card shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title"><ion-icon name="calendar-outline"></ion-icon>Fecha:</h2>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime" presentation="date"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </div>
+      <div class="ml-6 mr-14 card shadow-xl">
+        <div class="card-body">
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <span class="label-text">Todos</span> 
+              <input type="radio" name="radio-4" class="radio bg-blue-300" checked />
+            </label>
+            <label class="label cursor-pointer">
+              <span class="label-text">Pendientes</span> 
+              <input type="radio" name="radio-4" class="radio bg-red-300" />
+            </label>
+            <label class="label cursor-pointer">
+              <span class="label-text">Entregados</span> 
+              <input type="radio" name="radio-4" class="radio bg-green-300" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-2 mt-5 ml-5 mr-5">
+      <div class="card shadow-lg text-center mr-3">
+        <div class="card-body">
+          <div class="stat justify-items-center">
+            <div class="stat-title mb-2"><ion-icon class="text-blue-300" name="stats-chart-outline"></ion-icon> Porcentaje logrado</div>
+            <div class="radial-progress mt-1" style="--value:72;">72%</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center ml-3">
+        <div class="card shadow-lg mb-3">
+          <div class="stat">
+            <div class="stat-title"><ion-icon class="text-green-300" name="cash-outline"></ion-icon> Total a cobrar</div>
+            <div class="stat-value">Q3,650</div>
+          </div>
+        </div>
+        <div class="card shadow-lg mt-3">
+          <div class="stat">
+            <div class="stat-title"><ion-icon class="text-orange-500" name="cube-outline"></ion-icon> Paquetes totales</div>
+            <div class="stat-value">22</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="bg-gray-800">
-    <h1 class="text-6xl text-purple-400" >Hola mundo</h1>
-    <button class="btn glass">Glass button</button>
-  </div>
-  <button class="btn btn-outline btn-info">Info</button>
-  <button class="btn btn-outline btn-success">Success</button>
-  <button class="btn btn-outline btn-warning">Warning</button>
-  <button class="btn btn-outline btn-error">Error</button>
+    </div>
+
+
+  </div> 
 </ion-content>

@@ -8,11 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FolderPage implements OnInit {
   public folder: string;
+  public user: string;
+  public date: string;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    this.user = 'Juan Perez';
+    this.date = '15/08/2022';
   }
 
 }
