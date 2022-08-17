@@ -1,15 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
-    <ion-title>hola mundpo</ion-title>
+    <div class="flex justify-between">
+      <div class="flex flex-col order-first font-sans">
+        <div>
+          <p class="text-xl">{{folder}}</p>
+        </div>
+        <div>
+          <p class="text-sm text-sky-200">{{user}} - {{date}}</p>
+        </div>
+      </div>
+      <div class="order-last mr-3">
+        <button class="btn btn-outline bg-sky-200">
+          <ion-icon name="refresh" color="dark"></ion-icon>
+        </button>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <div class="flex flex-col mt-4">
+      <div class="card shadow-xl mr-7 ml-7 mt-4 mb-4 bg-teal-50">
+        <div class="flex justify-center mt-3">
+          <div class="avatar online">
+            <div class="rounded-full">
+              <img src="https://placeimg.com/192/192/people" />
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="flex justify-between">
+            <p class="order-first"><ion-icon class="text-blue-500" name="people-outline"></ion-icon><b>  Carlos Miranda Marroquin</b></p>
+          </div>
+          <p><ion-icon class="text-blue-500" name="home-outline"></ion-icon>  Esta es 12 La direccion Colinia de Casa, zona 2 Guatemala</p>
+          <p><ion-icon class="text-blue-500" name="bicycle-outline"></ion-icon>  Estevan Benitez</p>
+          <div class="flex justify-between">
+            <div class="badge badge-lg">Umaga</div>
+            <div class="badge badge-lg badge-outline">En stock</div>
+          </div>
+          <p><ion-icon class="text-blue-500" name="warning-outline"></ion-icon><b>  Empacar regalo</b></p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="mt-5 ml-6 mr-6 mb-6">
+      <div class="card bg-sky-100 shadow-xl">
+        <div class="card-body">
+          <div class="avatar online">
+            <div class="rounded-full">
+              <img src="https://placeimg.com/192/192/people" />
+            </div>
+          </div>
+          <div class="text-lg">Juan Perez Ramirez Lopez</div>
+        </div>
+      </div>
+    </div> -->
   </div>
 </ion-content>
