@@ -9,7 +9,7 @@
           <p class="text-xl">{{folder}}</p>
         </div>
         <div>
-          <p class="text-sm text-sky-200">{{user}} - {{date}}</p>
+          <p class="text-sm text-sky-200">{{user.first_name}} - {{date}}</p>
         </div>
       </div>
       <div class="order-last mr-3">
@@ -21,41 +21,114 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div>
-    <div class="flex flex-col mt-4">
-      <div class="card shadow-xl mr-7 ml-7 mt-4 mb-4 bg-teal-50">
-        <div class="flex justify-center mt-3">
-          <div class="avatar online">
-            <div class="rounded-full">
-              <img src="https://placeimg.com/192/192/people" />
-            </div>
+  <input type="checkbox" id="my-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Editar perfil</h3>
+      <p class="py-4">En esta opción podrás cambiar los datos de tu perfil!</p>
+      <div class="modal-action">
+        <label for="my-modal" class="btn bg-sky-400">Entendido</label>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col mt-3">
+    <div class="card shadow-xl mr-7 ml-7 mt-3 mb-4 bg-teal-50">
+      <div class="flex justify-center mt-5">
+        <div class="avatar online">
+          <div class="rounded-full">
+            <img src="https://placeimg.com/192/192/people" />
           </div>
         </div>
-        <div class="card-body">
-          <div class="flex justify-between">
-            <p class="order-first"><ion-icon class="text-blue-500" name="people-outline"></ion-icon><b>  Carlos Miranda Marroquin</b></p>
-          </div>
-          <p><ion-icon class="text-blue-500" name="home-outline"></ion-icon>  Esta es 12 La direccion Colinia de Casa, zona 2 Guatemala</p>
-          <p><ion-icon class="text-blue-500" name="bicycle-outline"></ion-icon>  Estevan Benitez</p>
-          <div class="flex justify-between">
-            <div class="badge badge-lg">Umaga</div>
-            <div class="badge badge-lg badge-outline">En stock</div>
-          </div>
-          <p><ion-icon class="text-blue-500" name="warning-outline"></ion-icon><b>  Empacar regalo</b></p>
+      </div>
+      <div class="flex justify-center mt-5 font-sans font-semibold text-2xl">
+        <p>{{user.first_name}} {{user.second_name}}</p>
+      </div>
+      <div class="card-body flex flex-col font-sans">
+        <div class="flex mt-2 mb-1">
+          <p>
+            <ion-icon class="text-blue-500 justify-center" name="call-outline"></ion-icon>
+            <b> Tel.:</b> {{user.phone_number}}
+          </p>
+          <p>
+            <ion-icon class="text-blue-500 justify-center" name="card-outline"></ion-icon>
+            <b> DPI:</b> {{user.id}}
+          </p>
+        </div>
+        <div class="flex mt-2 mb-1">
+          <p>
+            <ion-icon class="text-blue-500 justify-center" name="home-outline"></ion-icon>
+              {{user.address}}
+          </p>
+        </div>
+        <div class="flex mt-2 mb-1">
+          <p>
+            <ion-icon class="text-blue-500 justify-center" name="person-outline"></ion-icon>
+            <b> Puesto:</b> {{user.rol}}
+          </p>
+          <p>
+            <ion-icon class="text-blue-500 justify-center" name="happy-outline"></ion-icon>
+            <b> Status:</b> {{user.status}}
+          </p>
+        </div>
+        <div class="flex mt-5 mb-1">
+          <label for="my-modal" class="btn modal-button btn-block bg-sky-400">Editar perfil</label>
         </div>
       </div>
     </div>
-    <!-- <div class="mt-5 ml-6 mr-6 mb-6">
-      <div class="card bg-sky-100 shadow-xl">
-        <div class="card-body">
-          <div class="avatar online">
-            <div class="rounded-full">
-              <img src="https://placeimg.com/192/192/people" />
-            </div>
-          </div>
-          <div class="text-lg">Juan Perez Ramirez Lopez</div>
+  </div>
+  <div class="flex mt-4 justify-center">
+    <div class="grid grid-cols-2 card shadow-lg mb-4 bg-sky-50">
+      <div class="stat grow">
+        <p>Desde: </p>
+        <div>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime" presentation="date" value="2022-04-21T00:00:00"></ion-datetime>
+            </ng-template>
+          </ion-modal>
         </div>
       </div>
-    </div> -->
+      <div class="stat grow">
+        <p>Hasta: </p>
+        <div>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime" presentation="date"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </div>
+      <div class="stat text-center">
+        <div class="stat-title"><ion-icon class="text-orange-500" name="cube-outline"></ion-icon> Envíos finalizados</div>
+        <div class="stat-value text-blue-400">51</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">
+          <ion-icon class="text-blue-500" name="stats-chart-outline"></ion-icon> Metas cumplidas
+        </div>
+        <progress class="progress progress-accent" value="71" max="100"></progress>       
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <div class="card shadow-lg bg-sky-50 grow mb-6 mt-4 ml-3 mr-3">
+      <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-sky-50 rounded-box">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-xl font-medium">
+          Historial de paquetes
+        </div>
+        <div class="collapse-content"> 
+          <div *ngFor="let pack of package">
+            <span class="badge badge-md">{{pack.id}}</span>
+            {{pack.name_person}}
+            <div *ngIf="pack.state == 'Pendiente'" class="badge badge-error float-right">{{pack.state}}</div>
+            <div *ngIf="pack.state == 'Pagado'" class="badge badge-success float-right">{{pack.state}}</div>
+            <div class="badge badge-accent float-right">Q{{pack.price}}.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Package } from './models/packages.interface';
+import { Package } from '../models/packages.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class PackageServiceService {
     return [
       {
         id: 32145,
-        name_person: 'Juan Carlos Gomez',
+        name_person: 'Carlos Ramon Gomez',
         address: '17 calle 14-21, sector 3 Colonia La Esperanza, Zona 2, Guatemala',
         state: 'Pendiente',
         price: 285,
