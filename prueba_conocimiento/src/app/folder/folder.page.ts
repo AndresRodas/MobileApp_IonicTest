@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+//services
+import { PackageServiceService } from '../package-service.service';
+//models
+import { Package } from '../models/packages.interface';
 
 @Component({
   selector: 'app-folder',
@@ -8,15 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FolderPage implements OnInit {
   public folder: string;
-  public user: string;
+  public user: string = 'Juan Perez';
+  private dateFormat: Date = new Date();
   public date: string;
+  public package: Array<Package>;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, public PackageService: PackageServiceService) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.user = 'Juan Perez';
-    this.date = '15/08/2022';
+    this.date = `${this.dateFormat.getDate()}/${this.dateFormat.getMonth()+1}/${this.dateFormat.getFullYear()}`;
+    this.package = this.PackageService.getPackages()
   }
 
 }
